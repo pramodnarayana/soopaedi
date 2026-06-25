@@ -62,13 +62,13 @@ class Tenant(GlobalBase):
 class User(GlobalBase):
     """
     Represents a user profile in the application.
-    Authentication is handled by Authentik, this maps the IDP user to our app.
+    Authentication is handled by Zitadel, this maps the IDP user to our app.
     """
 
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    idp_user_id = Column(String(255), nullable=True, unique=True)  # Links to Authentik user
+    idp_user_id = Column(String(255), nullable=True, unique=True)  # Links to Zitadel user
     email = Column(String(255), nullable=False, unique=True)
     name = Column(String(255), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)

@@ -36,8 +36,8 @@ jwks_client = jwt.PyJWKClient(_settings.identity.jwks_url)
 
 async def get_raw_jwt(token: str | None = Depends(oauth2_scheme)) -> dict[str, Any]:
     """
-    Extracts and validates the JWT issued by Authentik.
-    In a true enterprise environment, this fetches the JWKS from Authentik
+    Extracts and validates the JWT issued by Zitadel.
+    In a true enterprise environment, this fetches the JWKS from Zitadel
     to verify the RSA signature.
     """
     if not token:
@@ -98,7 +98,7 @@ async def get_current_tenant_id(
     use_case: ResolveTenantUseCase = Depends(get_resolve_tenant_use_case),
 ) -> int:
     """
-    Resolves the external Authentik user email from the JWT to our internal global DB tenant_id.
+    Resolves the external Zitadel user email from the JWT to our internal global DB tenant_id.
     """
     email = token_payload.get("email")
     name = token_payload.get("name")

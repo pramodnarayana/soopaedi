@@ -64,7 +64,7 @@ db-init:
 	PYTHONPATH=libs/database/src:libs/config/src uv run python services/as2_server/scripts/seed.py
 
 db-reset:
-	@echo "Wiping application databases (leaving Authentik intact)..."
+	@echo "Wiping application databases (leaving Zitadel intact)..."
 	docker compose rm -s -f -v postgres_global postgres_shard_1
 	@echo "Restarting application databases..."
 	docker compose up -d postgres_global postgres_shard_1
